@@ -1,0 +1,25 @@
+<router-outlet></router-outlet>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin:24px 0;">
+    <a class="navbar-brand" href="javascript:void(0)">Abe's Restaurant Searcher</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="navbar-brand" href="#">
+            <img  src="assets/images/logo.jpg" width="50" height="50" alt="logo">
+          </a>
+        </li>
+      </ul>
+        <input #search name="searchQuery" class="form-control mr-sm-2" type="text" placeholder="Search" (keyup.enter)="newMessage(search.value)">
+        <button class="btn btn-success my-2 my-sm-0" type="button" (click)="newMessage(search.value)">Search</button>
+  </nav>
+<div *ngIf="status==1">
+  <h3>Restaurant Search Results:</h3>
+</div>
+      <ul class="list-group">
+            <div (click)="onSelect($event.target.innerText)" id="results"></div>  
+      </ul>
+<div *ngIf="status==2">
+  <button (click)="goBack()" type="button" class="btn btn-primary">Back</button>
+  <app-restaurants [searchValue]="searchVal" [restaurant]="restaurantSelect"></app-restaurants>
+  </div>
+<router-outlet></router-outlet>
